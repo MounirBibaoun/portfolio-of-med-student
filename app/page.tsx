@@ -7,6 +7,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { TypingText } from "./components/TypingText";
 import { RandomMedicalIcons } from "./components/MedicalFloatingIcons";
+import React from "react";
 
 export default function Home() {
   return (
@@ -86,22 +87,185 @@ export default function Home() {
         </SectionCard>
 
         <SectionCard title="Skills">
-          • Clinical Skills <br />
-          • Anatomy & Physiology <br />
-          • Patient Care <br />• Research Methods
-        </SectionCard>
-
-        <SectionCard title="Projects">
-          • Infant Nutrition Research <br />
-          • Anatomy App <br />• Volunteering at clinics
-        </SectionCard>
-
-        <SectionCard title="Contact">
-          Email: derya.med@gmail.com <br />
-          Instagram: @future.doctor.derya
+          • Patient Communication & Empathy <br />
+          • Clinical Observation Skills <br />
+          • Basic Diagnostics (Vitals, Examination) <br />
+          • Anatomy & Physiology Knowledge <br />
+          • First Aid & Emergency Basics <br />
+          • Teamwork in Clinical Settings <br />• Medical Research & Case
+          Analysis
         </SectionCard>
       </section>
       {/* <RandomMedicalIcons /> */}
+
+      {/* Gallery Section */}
+      {/* Image Slider Section */}
+      <section className="mt-16 max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <h2 className="text-center text-3xl font-bold text-pink-700 mb-6">
+          📸 My Gallery
+        </h2>
+        <p className="text-center text-pink-600 mb-8 max-w-md mx-auto">
+          Some moments from my journey ✨
+        </p>
+
+        <motion.div
+          className="overflow-hidden rounded-2xl"
+          whileTap={{ cursor: "grabbing" }}
+        >
+          <motion.div
+            className="flex gap-4"
+            drag="x"
+            dragConstraints={{ left: -1200, right: 0 }}
+            transition={{ type: "spring", stiffness: 200, damping: 30 }}
+          >
+            {[1, 2, 3, 4, 5].map((id) => (
+              <motion.div
+                key={id}
+                className="min-w-[80%] sm:min-w-[50%] md:min-w-[33%] lg:min-w-[25%] bg-white rounded-xl shadow-md overflow-hidden border border-pink-200"
+                whileHover={{ scale: 1.03 }}
+              >
+                <Image
+                  src={`/gallery/img${id}.jpg`} // <-- your images
+                  alt="Gallery"
+                  width={600}
+                  height={600}
+                  className="w-full h-64 object-cover"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </section>
+      {/* Medical Knowledge Cards Section */}
+      <section className="mt-20 max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <h2 className="text-center text-3xl font-bold text-pink-700 mb-6">
+          🧠 Medical Knowledge Cards
+        </h2>
+        <p className="text-center text-pink-600 mb-10 max-w-lg mx-auto">
+          Fun medical facts to explore and learn ✨
+        </p>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              id: 1,
+              title: "Heart",
+              icon: "❤️",
+              fact: "The human heart beats around 100,000 times per day, pumping roughly 7,500 liters of blood daily. The left ventricle generates enough pressure to theoretically squirt blood over 9 meters, highlighting the immense power of this muscular organ.",
+            },
+            {
+              id: 2,
+              title: "Brain",
+              icon: "🧠",
+              fact: "The adult brain weighs about 1.4 kg and contains roughly 86 billion neurons. Each neuron can form thousands of synapses, creating an estimated 100 trillion connections, which are responsible for memory, learning, and regulating all bodily functions.",
+            },
+            {
+              id: 3,
+              title: "Lungs",
+              icon: "🌬️",
+              fact: "The lungs contain around 300 million alveoli with a total surface area of roughly 70 m². Each day, an adult breathes in enough air to fill over 20,000 liters, facilitating efficient oxygen and carbon dioxide exchange.",
+            },
+          ].map((card) => {
+            const [flipped, setFlipped] = React.useState(false);
+
+            return (
+              <div
+                key={card.id}
+                className="relative w-full h-64 rounded-2xl cursor-pointer"
+                style={{ perspective: "1000px" }}
+                onMouseEnter={() => setFlipped(true)}
+                onMouseLeave={() => setFlipped(false)}
+                onClick={() => setFlipped(!flipped)} // works for mobile
+              >
+                <div
+                  className="relative w-full h-full transition-transform duration-500 rounded-2xl"
+                  style={{
+                    transformStyle: "preserve-3d",
+                    transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                  }}
+                >
+                  {/* Front */}
+                  <div
+                    className="absolute w-full h-full bg-pink-100 rounded-2xl shadow-lg flex flex-col items-center justify-center border border-pink-200"
+                    style={{ backfaceVisibility: "hidden" }}
+                  >
+                    <span className="text-5xl mb-4">{card.icon}</span>
+                    <h3 className="text-xl font-bold text-pink-700">
+                      {card.title}
+                    </h3>
+                  </div>
+
+                  {/* Back */}
+                  <div
+                    className="absolute w-full h-full bg-pink-200 rounded-2xl shadow-lg flex items-center justify-center p-4 text-center"
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transform: "rotateY(180deg)",
+                    }}
+                  >
+                    <p className="text-pink-800 text-sm">{card.fact}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="mt-16 w-full bg-pink-100/60 border-t border-pink-200 py-6 relative overflow-hidden">
+        {/* Floating soft glow circle */}
+        <motion.div
+          className="absolute inset-0 bg-pink-200 opacity-20 blur-3xl"
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 8, repeat: Infinity }}
+        />
+
+        <div className="relative z-10 flex flex-col items-center text-center px-4">
+          {/* Cute divider */}
+          <motion.div
+            className="h-1 w-24 bg-pink-300 rounded-full mb-3"
+            animate={{ width: ["5rem", "7rem", "5rem"] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          />
+
+          <p className="text-pink-700 text-sm md:text-base font-medium">
+            Made with ❤️ by Derya • Future Doctor
+          </p>
+
+          {/* Animated icons */}
+          <div className="flex gap-4 text-pink-500 text-xl mt-3">
+            <motion.span
+              animate={{ y: [0, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              🩺
+            </motion.span>
+
+            <motion.span
+              animate={{
+                y: [0, -5, 0],
+                transition: { duration: 2.4, repeat: Infinity },
+              }}
+            >
+              💗
+            </motion.span>
+
+            <motion.span
+              animate={{
+                y: [0, -5, 0],
+                transition: { duration: 2.8, repeat: Infinity },
+              }}
+            >
+              🌸
+            </motion.span>
+          </div>
+
+          <p className="text-pink-600 text-xs mt-3">
+            © {new Date().getFullYear()} All Rights Reserved
+          </p>
+        </div>
+      </footer>
     </main>
   );
 }
