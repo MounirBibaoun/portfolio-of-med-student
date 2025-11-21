@@ -272,28 +272,259 @@ export default function Home() {
       </section>
 
       {/* Sections */}
-      <section className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-10 sm:mt-12 md:mt-14 max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-        <SectionCard title="About Me">
-          I’m Derya, a passionate medical student at UPSSA – Université Privée
-          des Sciences de la Santé d’Agadir. Ever since I was young, I’ve been
-          fascinated by how the human body works and how medicine can change
-          lives. My journey in medical school is driven by empathy, curiosity,
-          and a deep desire to help people heal and feel understood. I believe
-          that being a doctor is not only about science — it's about compassion,
-          communication, and making people feel safe. My goal is to become a
-          caring doctor who brings comfort and confidence to every patient.
-        </SectionCard>
+      <section className="mt-16 max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+  <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    
+    {/* Elegant About Me Card */}
+    <motion.div
+      initial={{ opacity: 0, x: -30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      <div className="relative bg-gradient-to-br from-white via-pink-50 to-rose-50 rounded-3xl p-8 border border-pink-200/60 shadow-2xl hover:shadow-3xl transition-all duration-500 h-full overflow-hidden">
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-pink-200 to-transparent rounded-full blur-xl opacity-50"></div>
+        <div className="absolute bottom-0 left-0 w-24 h-24 bg-rose-200 rounded-full blur-lg opacity-30"></div>
+        
+        {/* Animated Border */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-400 via-rose-400 to-pink-400 opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10">
+          <div className="absolute inset-[2px] rounded-3xl bg-white"></div>
+        </div>
 
-        <SectionCard title="Skills">
-          • Patient Communication & Empathy <br />
-          • Clinical Observation Skills <br />
-          • Basic Diagnostics (Vitals, Examination) <br />
-          • Anatomy & Physiology Knowledge <br />
-          • First Aid & Emergency Basics <br />
-          • Teamwork in Clinical Settings <br />• Medical Research & Case
-          Analysis
-        </SectionCard>
-      </section>
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8 relative z-10">
+          <motion.div
+            className="relative bg-gradient-to-br from-pink-400 to-rose-500 p-4 rounded-2xl shadow-2xl"
+            whileHover={{ scale: 1.05, rotate: 5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <span className="text-3xl">👩‍⚕️</span>
+            <motion.div
+              className="absolute -inset-2 bg-pink-400 rounded-2xl blur-md opacity-50 -z-10"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 3, repeat: Infinity }}
+            />
+          </motion.div>
+          <div>
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              My Journey
+            </h3>
+            <p className="text-pink-500 text-sm mt-1">Passionate Medical Student</p>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-6 relative z-10">
+          <motion.div
+            className="bg-white/80 rounded-2xl p-6 border border-pink-100 shadow-sm backdrop-blur-sm"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-pink-700 leading-relaxed text-lg">
+              I'm <span className="font-bold text-pink-600 bg-pink-50 px-3 py-1 rounded-xl">Derya</span>, a dedicated medical student at {" "}
+              <span className="font-bold text-pink-600 bg-gradient-to-r from-pink-50 to-rose-50 px-3 py-1 rounded-xl border border-pink-200">
+                UPSSA
+              </span>, pursuing my dream of becoming a compassionate healer.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="bg-gradient-to-r from-pink-200/40 to-rose-200/40 rounded-2xl p-6 border-l-4 border-pink-400 shadow-lg"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
+            viewport={{ once: true }}
+          >
+            <div className="flex items-start gap-4">
+              <span className="text-2xl text-pink-600 mt-1">✨</span>
+              <p className="text-pink-700 italic text-lg leading-relaxed">
+                "My fascination with medicine began with wonder about the human body's incredible complexity and its capacity for healing."
+              </p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="grid grid-cols-2 gap-4"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.4 }}
+            viewport={{ once: true }}
+          >
+            <div className="bg-white/60 rounded-xl p-4 text-center border border-pink-100">
+              <span className="text-2xl text-pink-600 mb-2 block">💗</span>
+              <p className="text-pink-700 font-semibold">Empathy</p>
+            </div>
+            <div className="bg-white/60 rounded-xl p-4 text-center border border-pink-100">
+              <span className="text-2xl text-pink-600 mb-2 block">🔍</span>
+              <p className="text-pink-700 font-semibold">Curiosity</p>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="bg-gradient-to-br from-pink-500/10 to-rose-500/10 rounded-2xl p-6 border-2 border-pink-200/50 shadow-xl"
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.5 }}
+            viewport={{ once: true }}
+          >
+            <p className="text-pink-700 font-bold text-lg text-center">
+              I believe true healing combines <span className="text-pink-600">medical excellence</span> with <span className="text-pink-600">genuine compassion</span>.
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Floating Icon */}
+        <motion.div
+          className="absolute bottom-6 right-6 text-4xl text-pink-300/40"
+          animate={{ y: [0, -10, 0], rotate: [0, 10, 0] }}
+          transition={{ duration: 4, repeat: Infinity }}
+        >
+          ⚕️
+        </motion.div>
+      </div>
+    </motion.div>
+
+    {/* Beautiful Skills Card */}
+    <motion.div
+      initial={{ opacity: 0, x: 30 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: true }}
+      className="group"
+    >
+      <div className="relative bg-gradient-to-br from-white via-pink-50 to-rose-50 rounded-3xl p-8 border border-pink-200/60 shadow-2xl hover:shadow-3xl transition-all duration-500 h-full overflow-hidden">
+        
+        {/* Decorative Elements */}
+        <div className="absolute top-0 left-0 w-28 h-28 bg-rose-200 rounded-full blur-xl opacity-40"></div>
+        <div className="absolute bottom-0 right-0 w-20 h-20 bg-pink-300 rounded-full blur-lg opacity-30"></div>
+
+        {/* Header */}
+        <div className="flex items-center gap-4 mb-8 relative z-10">
+          <motion.div
+            className="relative bg-gradient-to-br from-pink-400 to-rose-500 p-4 rounded-2xl shadow-2xl"
+            whileHover={{ scale: 1.05, rotate: -5 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <span className="text-3xl">⭐</span>
+            <motion.div
+              className="absolute -inset-2 bg-rose-400 rounded-2xl blur-md opacity-50 -z-10"
+              animate={{ scale: [1, 1.1, 1] }}
+              transition={{ duration: 3, repeat: Infinity, delay: 1 }}
+            />
+          </motion.div>
+          <div>
+            <h3 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
+              My Skills
+            </h3>
+            <p className="text-pink-500 text-sm mt-1">Clinical Excellence</p>
+          </div>
+        </div>
+
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 gap-4 relative z-10">
+          {[
+            {
+              skill: "Patient Communication & Empathy",
+              icon: "💬",
+              level: 90,
+              color: "from-pink-400 to-rose-500"
+            },
+            {
+              skill: "Clinical Observation Skills",
+              icon: "👁️",
+              level: 85,
+              color: "from-purple-400 to-pink-500"
+            },
+            {
+              skill: "Basic Diagnostics & Vitals",
+              icon: "📊",
+              level: 80,
+              color: "from-blue-400 to-purple-500"
+            },
+            {
+              skill: "Anatomy & Physiology",
+              icon: "🦴",
+              level: 88,
+              color: "from-red-400 to-pink-500"
+            },
+            {
+              skill: "First Aid & Emergency Care",
+              icon: "🆘",
+              level: 82,
+              color: "from-orange-400 to-red-500"
+            },
+            {
+              skill: "Medical Teamwork",
+              icon: "👥",
+              level: 87,
+              color: "from-teal-400 to-blue-500"
+            }
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02, x: 5 }}
+              className="bg-white/80 rounded-2xl p-4 border border-pink-100 shadow-sm hover:shadow-md transition-all duration-300 backdrop-blur-sm"
+            >
+              <div className="flex items-center gap-4">
+                <motion.div
+                  className="text-2xl p-3 rounded-xl bg-gradient-to-br from-pink-100 to-rose-100 shadow-inner"
+                  whileHover={{ rotate: 15 }}
+                >
+                  {item.icon}
+                </motion.div>
+                <div className="flex-1">
+                  <h4 className="font-semibold text-pink-700 text-sm mb-2">
+                    {item.skill}
+                  </h4>
+                  <div className="flex items-center gap-3">
+                    <div className="flex-1 bg-pink-100 rounded-full h-2 overflow-hidden">
+                      <motion.div
+                        className={`h-full bg-gradient-to-r ${item.color} rounded-full shadow-inner`}
+                        initial={{ width: 0 }}
+                        whileInView={{ width: `${item.level}%` }}
+                        transition={{ duration: 1.5, delay: index * 0.2 }}
+                        viewport={{ once: true }}
+                      />
+                    </div>
+                    <span className="text-pink-600 font-bold text-sm min-w-10">
+                      {item.level}%
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Summary */}
+        <motion.div
+          className="mt-6 p-5 bg-gradient-to-r from-pink-200/30 to-rose-200/30 rounded-2xl border border-pink-200/50 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.6 }}
+          viewport={{ once: true }}
+        >
+          <div className="flex items-center gap-3 mb-2">
+            <span className="text-xl text-pink-600">🎯</span>
+            <h4 className="font-bold text-pink-700">Continuous Growth</h4>
+          </div>
+          <p className="text-pink-600 text-sm">
+            Dedicated to ongoing learning and skill development in the medical field.
+          </p>
+        </motion.div>
+      </div>
+    </motion.div>
+  </div>
+</section>
       {/* <RandomMedicalIcons /> */}
 
       {/* Gallery Section */}
@@ -533,57 +764,191 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-16 w-full bg-pink-100/60 border-t border-pink-200 py-6 relative overflow-hidden">
-        {/* Floating soft glow circle */}
+       <footer className="mt-20 w-full bg-gradient-to-b from-pink-100/80 to-pink-200/60 border-t border-pink-300/50 py-12 relative overflow-hidden">
+        {/* Animated Background Elements */}
         <motion.div
-          className="absolute inset-0 bg-pink-200 opacity-20 blur-3xl"
-          animate={{ scale: [1, 1.2, 1] }}
+          className="absolute inset-0 bg-gradient-to-r from-pink-200/20 to-rose-200/20 blur-3xl"
+          animate={{ 
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3]
+          }}
           transition={{ duration: 8, repeat: Infinity }}
         />
 
-        <div className="relative z-10 flex flex-col items-center text-center px-4">
-          {/* Cute divider */}
+        {/* Floating Medical Icons */}
+        {[...Array(8)].map((_, i) => (
           <motion.div
-            className="h-1 w-24 bg-pink-300 rounded-full mb-3"
-            animate={{ width: ["5rem", "7rem", "5rem"] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          />
+            key={i}
+            className="absolute text-2xl opacity-20"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              rotate: [0, 180, 360],
+            }}
+            transition={{
+              duration: 15 + Math.random() * 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            {["❤️", "🧠", "🩺", "💊", "⚕️", "🔬", "👁️", "🌡️"][i]}
+          </motion.div>
+        ))}
 
-          <p className="text-pink-700 text-sm md:text-base font-medium">
-            Made with ❤️ by Derya • Future Doctor
-          </p>
-
-          {/* Animated icons */}
-          <div className="flex gap-4 text-pink-500 text-xl mt-3">
-            <motion.span
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
+        <div className="relative z-10 max-w-6xl mx-auto px-4">
+          {/* Main Footer Content */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {/* Brand Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true }}
+              className="text-center md:text-left"
             >
-              🩺
-            </motion.span>
+              <h3 className="text-2xl font-bold text-pink-700 mb-4 flex items-center justify-center md:justify-start">
+                <span className="mr-2">👩‍⚕️</span>
+                Derya Abdo
+              </h3>
+              <p className="text-pink-600 leading-relaxed">
+                Passionate medical student dedicated to healing with compassion and making a difference in healthcare.
+              </p>
+            </motion.div>
 
-            <motion.span
-              animate={{
-                y: [0, -5, 0],
-                transition: { duration: 2.4, repeat: Infinity },
-              }}
+            {/* Quick Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              viewport={{ once: true }}
+              className="text-center"
             >
-              💗
-            </motion.span>
+              <h4 className="text-lg font-semibold text-pink-700 mb-4">Explore</h4>
+              <div className="flex flex-col gap-2">
+                {['About', 'Skills', 'Gallery', 'Presentations', 'Knowledge'].map((item, index) => (
+                  <motion.a
+                    key={item}
+                    href={`#${item.toLowerCase()}`}
+                    className="text-pink-600 hover:text-pink-700 transition-colors duration-300"
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {item}
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
 
-            <motion.span
-              animate={{
-                y: [0, -5, 0],
-                transition: { duration: 2.8, repeat: Infinity },
-              }}
+            {/* Contact/Inspiration */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              viewport={{ once: true }}
+              className="text-center md:text-right"
             >
-              🌸
-            </motion.span>
+              <h4 className="text-lg font-semibold text-pink-700 mb-4">Stay Inspired</h4>
+              <p className="text-pink-600 italic mb-4">
+                "The art of medicine consists of amusing the patient while nature cures the disease."
+              </p>
+              <p className="text-pink-500 text-sm">- Voltaire</p>
+            </motion.div>
           </div>
 
-          <p className="text-pink-600 text-xs mt-3">
-            © {new Date().getFullYear()} All Rights Reserved
-          </p>
+          {/* Decorative Divider */}
+          <motion.div
+            className="h-px bg-gradient-to-r from-transparent via-pink-300 to-transparent my-8"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 1, delay: 0.5 }}
+            viewport={{ once: true }}
+          />
+
+          {/* Bottom Section */}
+          <div className="flex flex-col items-center">
+            {/* Animated Icons */}
+            <motion.div
+              className="flex gap-6 text-2xl mb-6"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+            >
+              {[
+                { icon: "🩺", delay: 0 },
+                { icon: "❤️", delay: 0.2 },
+                { icon: "📚", delay: 0.4 },
+                { icon: "⚕️", delay: 0.6 },
+                { icon: "✨", delay: 0.8 }
+              ].map((item, index) => (
+                <motion.span
+                  key={index}
+                  className="cursor-pointer bg-white/50 rounded-full p-3 shadow-lg border border-pink-200 hover:shadow-xl transition-all duration-300"
+                  animate={{ 
+                    y: [0, -8, 0],
+                    rotate: [0, 5, -5, 0]
+                  }}
+                  transition={{ 
+                    duration: 3,
+                    repeat: Infinity,
+                    delay: item.delay
+                  }}
+                  whileHover={{ 
+                    scale: 1.2,
+                    rotate: 360,
+                    transition: { duration: 0.3 }
+                  }}
+                >
+                  {item.icon}
+                </motion.span>
+              ))}
+            </motion.div>
+
+            {/* Main Text */}
+            <motion.p
+              className="text-pink-700 text-lg font-semibold mb-4 text-center"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              Made with <motion.span 
+                className="inline-block"
+                animate={{ scale: [1, 1.3, 1] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >💗</motion.span> by Love • Future Doctor
+            </motion.p>
+
+            {/* Copyright */}
+            <motion.p
+              className="text-pink-600 text-sm"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 1 }}
+              viewport={{ once: true }}
+            >
+              © {new Date().getFullYear()} Derya Abdo. All Rights Reserved.
+            </motion.p>
+
+            {/* Floating Heart */}
+            <motion.div
+              className="absolute -bottom-4 -right-4 text-6xl text-pink-300/30"
+              animate={{
+                y: [0, -20, 0],
+                rotate: [0, 10, -10, 0],
+              }}
+              transition={{
+                duration: 6,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              ❤️
+            </motion.div>
+          </div>
         </div>
       </footer>
     </main>
