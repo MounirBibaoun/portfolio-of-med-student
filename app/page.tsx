@@ -14,6 +14,31 @@ export default function Home() {
     <main className="min-h-screen relative bg-gradient-to-b from-pink-50 via-pink-100 to-pink-50 overflow-hidden">
       {/* Floating Sparkles & Hearts */}
       <FloatingSparkles />
+      {/* Floating Pink Bubbles */}
+{[...Array(40)].map((_, i) => (
+  <motion.div
+    key={i}
+    className={`absolute rounded-full bg-pink-200 opacity-${10 + Math.floor(Math.random() * 30)} w-${2 + Math.floor(Math.random() * 6)} h-${2 + Math.floor(Math.random() * 6)}`}
+    style={{
+      left: `${Math.random() * 100}%`,
+      top: `${Math.random() * 100}%`,
+      width: `${8 + Math.random() * 12}px`,
+      height: `${8 + Math.random() * 12}px`,
+    }}
+    animate={{
+      y: [0, -20 - Math.random() * 20, 0],
+      x: [0, 10 - Math.random() * 20, -10 + Math.random() * 20, 0],
+      opacity: [0.2, 0.6, 0.2],
+    }}
+    transition={{
+      duration: 5 + Math.random() * 5,
+      repeat: Infinity,
+      ease: "easeInOut",
+      delay: Math.random() * 3,
+    }}
+  />
+))}
+
       <motion.div
         className="absolute inset-0 bg-pink-200 opacity-10 rounded-full blur-3xl -translate-y-20 scale-125"
         animate={{ rotate: 360 }}
@@ -37,9 +62,11 @@ export default function Home() {
         {/* Floating hearts */}
         <AnimatedHeart />
 
-        <TypingText text="Derya Abdo" />
+        <TypingText text="Derya Abdo🩺"  />
+        
+        
         <motion.div
-          className="h-1 w-32 bg-pink-300 rounded-full mt-2"
+          className="h-1 w-32 bg-pink-300 rounded-full mt-6"
           animate={{ width: ["6rem", "8rem", "6rem"] }}
           transition={{ duration: 2, repeat: Infinity }}
         />
