@@ -1,0 +1,6 @@
+<!-- sample rectangle -->
+<svg width="140" height="140" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+<circle cx="100" cy="100" r="90" fill="#ffd6e8" stroke="#ff8fb3" stroke-width="6" />
+<path d="M100 40 L130 90 L70 90 Z" fill="#ff8fb3" />
+<circle cx="100" cy="125" r="28" fill="#ffb6d9" />
+</svg>
