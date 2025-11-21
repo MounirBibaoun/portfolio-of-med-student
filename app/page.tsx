@@ -7,9 +7,59 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { TypingText } from "./components/TypingText";
 import { RandomMedicalIcons } from "./components/MedicalFloatingIcons";
-import React from "react";
+import React, { useState } from "react";
 
 export default function Home() {
+  const [currentSlide, setCurrentSlide] = useState(0);
+    const galleryImages = [
+    { id: 1, src: "/gallery/img1.jpg", alt: "Medical study session" },
+    { id: 2, src: "/gallery/img2.jpg", alt: "Campus life" },
+    { id: 3, src: "/gallery/img3.jpg", alt: "Laboratory work" },
+    { id: 4, src: "/gallery/img4.jpg", alt: "Clinical practice" },
+    { id: 5, src: "/gallery/img5.jpg", alt: "Study group" }
+  ];
+    const presentations = [
+    {
+      id: 1,
+      title: "Cardiovascular System",
+      description: "Anatomy and physiology of the human heart",
+      icon: "❤️",
+      date: "2024",
+      tags: ["Anatomy", "Physiology"]
+    },
+    {
+      id: 2,
+      title: "Neurological Disorders",
+      description: "Common neurological conditions and treatments",
+      icon: "🧠",
+      date: "2024",
+      tags: ["Neurology", "Clinical"]
+    },
+    {
+      id: 3,
+      title: "Pediatric Care",
+      description: "Essential pediatric examination techniques",
+      icon: "👶",
+      date: "2023",
+      tags: ["Pediatrics", "Examination"]
+    },
+    {
+      id: 4,
+      title: "Medical Ethics",
+      description: "Ethical considerations in modern medicine",
+      icon: "⚖️",
+      date: "2023",
+      tags: ["Ethics", "Professionalism"]
+    }
+  ];
+
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
   return (
     <main className="min-h-screen relative bg-gradient-to-b from-pink-50 via-pink-100 to-pink-50 overflow-hidden">
       {/* Floating Sparkles & Hearts */}
@@ -248,40 +298,162 @@ export default function Home() {
 
       {/* Gallery Section */}
       {/* Image Slider Section */}
-      <section className="mt-16 max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
-        <h2 className="text-center text-3xl font-bold text-pink-700 mb-6">
-          📸 My Gallery
-        </h2>
-        <p className="text-center text-pink-600 mb-8 max-w-md mx-auto">
-          Some moments from my journey ✨
-        </p>
-
+       <section className="mt-16 max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
         <motion.div
-          className="overflow-hidden rounded-2xl"
-          whileTap={{ cursor: "grabbing" }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
         >
-          <motion.div
-            className="flex gap-4"
-            drag="x"
-            dragConstraints={{ left: -1200, right: 0 }}
-            transition={{ type: "spring", stiffness: 200, damping: 30 }}
-          >
-            {[1, 2, 3, 4, 5].map((id) => (
-              <motion.div
-                key={id}
-                className="min-w-[80%] sm:min-w-[50%] md:min-w-[33%] lg:min-w-[25%] bg-white rounded-xl shadow-md overflow-hidden border border-pink-200"
-                whileHover={{ scale: 1.03 }}
-              >
-                <Image
-                  src={`/gallery/img${id}.jpg`} // <-- your images
-                  alt="Gallery"
-                  width={600}
-                  height={600}
-                  className="w-full h-64 object-cover"
+          <h2 className="text-center text-3xl font-bold text-pink-700 mb-4">
+            📸 My Gallery
+          </h2>
+          <p className="text-center text-pink-600 mb-10 max-w-md mx-auto">
+            Captured moments from my medical journey ✨
+          </p>
+
+          {/* Slider Container */}
+          <div className="relative bg-white/60 backdrop-blur-sm rounded-3xl p-4 border border-pink-200 shadow-xl">
+            {/* Main Image Display */}
+            <div className="relative h-80 sm:h-96 rounded-2xl overflow-hidden">
+              {galleryImages.map((image, index) => (
+                <motion.div
+                  key={image.id}
+                  className={`absolute inset-0 w-full h-full ${index === currentSlide ? 'block' : 'hidden'}`}
+                  initial={{ opacity: 0, scale: 1.1 }}
+                  animate={{ 
+                    opacity: index === currentSlide ? 1 : 0,
+                    scale: index === currentSlide ? 1 : 1.1
+                  }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    className="object-cover rounded-2xl"
+                  />
+                  
+                  {/* Gradient Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-pink-900/20 to-transparent rounded-2xl" />
+                  
+                  {/* Image Info */}
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <p className="text-white font-semibold text-lg drop-shadow-lg">
+                      {image.alt}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Navigation Arrows */}
+            <button
+              onClick={prevSlide}
+              className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm text-pink-600 w-10 h-10 rounded-full flex items-center justify-center shadow-lg border border-pink-200 hover:bg-white hover:scale-110 transition-all duration-200 z-20"
+            >
+              ←
+            </button>
+            
+            <button
+              onClick={nextSlide}
+              className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white/80 backdrop-blur-sm text-pink-600 w-10 h-10 rounded-full flex items-center justify-center shadow-lg border border-pink-200 hover:bg-white hover:scale-110 transition-all duration-200 z-20"
+            >
+              →
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center gap-3 mt-6">
+              {galleryImages.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === currentSlide 
+                      ? 'bg-pink-500 scale-125' 
+                      : 'bg-pink-200 hover:bg-pink-300'
+                  }`}
                 />
+              ))}
+            </div>
+
+            {/* Image Counter */}
+            <div className="text-center mt-4">
+              <span className="bg-pink-100 text-pink-700 px-4 py-2 rounded-full text-sm font-medium border border-pink-200">
+                {currentSlide + 1} / {galleryImages.length}
+              </span>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      <section className="mt-16 max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h2 className="text-center text-3xl font-bold text-pink-700 mb-4">
+            📊 My Presentations
+          </h2>
+          <p className="text-center text-pink-600 mb-10 max-w-lg mx-auto">
+            Academic presentations and research projects 🎓
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {presentations.map((presentation, index) => (
+              <motion.div
+                key={presentation.id}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-pink-200 shadow-lg hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              >
+                {/* Icon with floating animation */}
+                <motion.div
+                  className="text-4xl mb-4 text-center"
+                  whileHover={{ scale: 1.2, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {presentation.icon}
+                </motion.div>
+
+                {/* Content */}
+                <h3 className="text-xl font-bold text-pink-700 mb-2 text-center group-hover:text-pink-600 transition-colors">
+                  {presentation.title}
+                </h3>
+                
+                <p className="text-pink-600 text-sm mb-4 text-center leading-relaxed">
+                  {presentation.description}
+                </p>
+
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 justify-center mb-3">
+                  {presentation.tags.map((tag, tagIndex) => (
+                    <span
+                      key={tagIndex}
+                      className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium border border-pink-200"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Date */}
+                <div className="text-center">
+                  <span className="text-pink-500 text-sm font-medium bg-pink-50 px-3 py-1 rounded-full border border-pink-200">
+                    {presentation.date}
+                  </span>
+                </div>
+
+                {/* Hover effect overlay */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-pink-200/10 to-pink-300/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10" />
               </motion.div>
             ))}
-          </motion.div>
+          </div>
         </motion.div>
       </section>
       {/* Medical Knowledge Cards Section */}
