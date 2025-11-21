@@ -48,54 +48,175 @@ export default function Home() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="flex flex-col items-center mt-12 md:mt-16 text-center px-4 sm:px-6 lg:px-0 relative z-10">
-        {/* Cute animated ribbon above the profile */}
+     <section className="flex flex-col items-center mt-12 md:mt-16 text-center px-4 sm:px-6 lg:px-0 relative z-10">
+        {/* Animated ribbon with sparkle trail */}
         <motion.div
-          className="mb-4 sm:mb-6 px-4 sm:px-6 py-1 sm:py-2 bg-pink-300/60 text-pink-800 rounded-full font-bold shadow-lg text-xs sm:text-sm tracking-wide"
-          initial={{ y: -20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          className="relative mb-4 sm:mb-6 px-6 sm:px-8 py-2 sm:py-3 bg-gradient-to-r from-pink-300 to-pink-400 text-white rounded-full font-bold shadow-xl text-sm sm:text-base tracking-wide"
+          initial={{ y: -30, opacity: 0, scale: 0.8 }}
+          animate={{ y: 0, opacity: 1, scale: 1 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 200, 
+            damping: 15,
+            duration: 1, 
+            delay: 0.3 
+          }}
+          whileHover={{ 
+            scale: 1.05,
+            background: "linear-gradient(45deg, #f9a8d4, #f472b6)"
+          }}
         >
-          🎀 Future Doctor & Dreamer ✨
+          🎀 Future Doctor & Dreamer 
+          {/* Sparkle effect */}
+          <motion.div
+            className="absolute -top-1 -right-1 text-yellow-200"
+            animate={{ scale: [1, 1.5, 1], rotate: [0, 180, 360] }}
+            transition={{ duration: 2, repeat: Infinity }}
+          >
+            ✨
+          </motion.div>
         </motion.div>
 
         {/* Floating hearts */}
         <AnimatedHeart />
 
-        <TypingText text="Derya Abdo🩺"  />
-        
-        
+        {/* Enhanced Typing Text with glow */}
         <motion.div
-          className="h-1 w-32 bg-pink-300 rounded-full mt-6"
-          animate={{ width: ["6rem", "8rem", "6rem"] }}
-          transition={{ duration: 2, repeat: Infinity }}
+          className="relative"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.8 }}
+        >
+          <div className="absolute inset-0 bg-pink-200 blur-xl opacity-50 rounded-full scale-125" />
+          <TypingText text="Derya Abdo" />
+        </motion.div>
+        
+        {/* Animated divider */}
+        <motion.div
+          className="h-1 bg-gradient-to-r from-transparent via-pink-300 to-transparent rounded-full mt-6"
+          initial={{ width: 0 }}
+          animate={{ width: "12rem" }}
+          transition={{ duration: 1.5, delay: 1.2 }}
         />
 
-        <p className="max-w-md sm:max-w-lg md:max-w-xl mt-2 sm:mt-3 text-pink-700 text-sm sm:text-base md:text-lg px-2">
-          Passionate medical student exploring the world of medicine with love
-          and curiosity.
-        </p>
-
-        {/* Profile Picture with soft pink glow */}
-        <motion.div
-          initial={{ scale: 0.9, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1 }}
-          className="relative mt-6"
+        {/* Enhanced description */}
+        <motion.p
+          className="max-w-md sm:max-w-lg md:max-w-xl mt-4 sm:mt-6 text-pink-700 text-sm sm:text-base md:text-lg px-2 leading-relaxed"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.5 }}
         >
-          <motion.div
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="inline-block"
+          Passionate medical student at {" "} <span className="font-semibold text-pink-600">UPSSA</span> exploring the world of medicine with{" "}
+          <motion.span
+            className="text-pink-600 font-semibold"
+            animate={{ 
+              color: ["#db2777", "#ec4899", "#db2777"],
+              textShadow: ["0 0 0px #fff", "0 0 8px #f9a8d4", "0 0 0px #fff"]
+            }}
+            transition={{ duration: 2, repeat: Infinity }}
           >
-            <div className="absolute inset-0 bg-pink-200 rounded-full blur-3xl opacity-30 -z-10" />
-            <Image
-              src="/profile1.jpg"
-              alt="profile"
-              width={180}
-              height={180}
-              className="rounded-full border-4 border-pink-300 shadow-xl"
-            />
+            love
+          </motion.span>{" "}
+          and{" "}
+          <motion.span
+            className="text-pink-600 font-semibold"
+            animate={{ 
+              color: ["#db2777", "#ec4899", "#db2777"],
+              textShadow: ["0 0 0px #fff", "0 0 8px #f9a8d4", "0 0 0px #fff"]
+            }}
+            transition={{ duration: 2, repeat: Infinity, delay: 1 }}
+          >
+            curiosity
+          </motion.span>
+          .
+        </motion.p>
+
+        {/* Enhanced Profile Picture */}
+  <motion.div
+          initial={{ scale: 0.8, opacity: 0, rotateY: 180 }}
+          animate={{ scale: 1, opacity: 1, rotateY: 0 }}
+          transition={{ 
+            type: "spring", 
+            stiffness: 100, 
+            damping: 20,
+            duration: 1.5,
+            delay: 0.5 
+          }}
+          className="relative mt-10 group"
+        >
+          {/* Animated Pink Border */}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-pink-300 via-pink-400 to-pink-300 rounded-full p-1 blur-lg opacity-70 -z-10"
+            animate={{ 
+              rotate: 360,
+              scale: [1, 1.15, 1]
+            }}
+            transition={{ 
+              rotate: { duration: 8, repeat: Infinity, ease: "linear" },
+              scale: { duration: 4, repeat: Infinity }
+            }}
+          />
+          
+          {/* Glass Effect Container */}
+          <motion.div
+            animate={{ 
+              y: [0, -15, 0],
+            }}
+            transition={{ 
+              duration: 4, 
+              repeat: Infinity, 
+              ease: "easeInOut" 
+            }}
+            className="relative"
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.3 }
+            }}
+          >
+            <div className="relative bg-white/30 backdrop-blur-lg rounded-full p-2 border border-white/40 shadow-2xl">
+              <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-transparent rounded-full -z-10" />
+              <Image
+                src="/profile1.jpg"
+                alt="profile"
+                width={220}
+                height={220}
+                className="rounded-full border-4 border-white/90 shadow-2xl transition-all duration-500 group-hover:border-white group-hover:shadow-pink-300/50"
+              />
+              
+              {/* Floating Medical Icons */}
+              <motion.div
+                className="absolute -top-3 -right-3 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg text-pink-500 text-xl border border-white/50"
+                animate={{ 
+                  y: [0, -12, 0],
+                  rotate: [0, 15, -15, 0]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  ease: "easeInOut" 
+                }}
+                whileHover={{ scale: 1.2, rotate: 360 }}
+              >
+                🩺
+              </motion.div>
+              
+              <motion.div
+                className="absolute -bottom-2 -left-2 bg-white/90 backdrop-blur-sm rounded-full p-2 shadow-lg text-pink-400 text-lg border border-white/50"
+                animate={{ 
+                  y: [0, 10, 0],
+                  rotate: [0, -10, 10, 0]
+                }}
+                transition={{ 
+                  duration: 3.5, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: 1 
+                }}
+                whileHover={{ scale: 1.2, rotate: -360 }}
+              >
+                📚
+              </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       </section>
