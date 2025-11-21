@@ -50,7 +50,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
-            className="absolute top-full left-0 w-full bg-pink-50 border-t border-pink-200 flex flex-col items-center py-4 md:hidden gap-4 shadow-md"
+            className="absolute text-pink-700 top-full  left-0 w-full bg-pink-50 border-t border-pink-200 flex flex-col items-center py-4 md:hidden gap-4 shadow-md"
           >
             <Link href="#about" onClick={() => setIsOpen(false)}>
               About
