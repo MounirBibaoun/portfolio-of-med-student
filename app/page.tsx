@@ -928,6 +928,19 @@ export default function Home() {
             );
           })}
         </div>
+          <motion.div
+      className="text-center mt-12 p-6 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl border border-pink-200 shadow-lg"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: 0.6 }}
+    >
+      <p className="text-pink-700 font-semibold text-lg">
+        💫 More medical knowledge cards coming soon!
+      </p>
+      <p className="text-pink-600 text-sm mt-2">
+        Stay tuned for updates on new fascinating medical facts
+      </p>
+    </motion.div>
       </section>
 
 
