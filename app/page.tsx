@@ -12,6 +12,7 @@ import React, { useState } from "react";
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const galleryImages = [
+    { id: 0, src: "/gallery/img21.jpg", alt: "Medical study session" },
     { id: 1, src: "/gallery/img7.jpg", alt: "Medical study session" },
     { id: 2, src: "/gallery/img8.jpg", alt: "Clinical practice" },
     { id: 3, src: "/gallery/img9.jpg", alt: "Laboratory work" },
@@ -39,14 +40,14 @@ export default function Home() {
       date: "2024",
       tags: ["Neurology", "Clinical"],
     },
-    {
-      id: 3,
-      title: "Pediatric Care",
-      description: "Essential pediatric examination techniques",
-      icon: "👶",
-      date: "2023",
-      tags: ["Pediatrics", "Examination"],
-    },
+    // {
+    //   id: 3,
+    //   title: "Pediatric Care",
+    //   description: "Essential pediatric examination techniques",
+    //   icon: "👶",
+    //   date: "2023",
+    //   tags: ["Pediatrics", "Examination"],
+    // },
     {
       id: 4,
       title: "Medical Ethics",
@@ -244,7 +245,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/profile1.jpg"
+                  src="/profile3.jpg"
                   alt="profile"
                   width={220}
                   height={220}
@@ -854,206 +855,81 @@ export default function Home() {
       {/* Medical Knowledge Cards Section */}
     
 {/* Enhanced Medical Knowledge Cards Section */}
-<section id="knowledge" className="mt-20 max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8 }}
-    viewport={{ once: true }}
-  >
-    {/* Section Header */}
-    <div className="text-center mb-12">
-      <motion.div
-        className="inline-flex items-center gap-3 bg-gradient-to-r from-pink-100 to-rose-100 px-6 py-3 rounded-full border border-pink-200 shadow-lg mb-4"
-        initial={{ scale: 0.9, opacity: 0 }}
-        whileInView={{ scale: 1, opacity: 1 }}
-        transition={{ duration: 0.6 }}
-      >
-        <span className="text-2xl">🧠</span>
-        <h2 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-pink-600 to-rose-600 bg-clip-text text-transparent">
-          Medical Knowledge Cards
+<section id="knowledge" className="mt-20 max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+        <h2 className="text-center text-3xl font-bold text-pink-700 mb-6">
+          🧠 Medical Knowledge Cards
         </h2>
-        <span className="text-2xl">💡</span>
-      </motion.div>
-      <motion.p
-        className="text-pink-600 text-lg max-w-2xl mx-auto leading-relaxed"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-      >
-        Interactive cards to explore fascinating medical facts and discoveries
-      </motion.p>
-    </div>
+        <p className="text-center text-pink-600 mb-10 max-w-lg mx-auto">
+          Fun medical facts to explore and learn ✨
+        </p>
 
-    {/* Knowledge Cards Grid */}
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {[
-        {
-          id: 1,
-          title: "Heart",
-          icon: "❤️",
-          fact: "The human heart beats around 100,000 times per day, pumping roughly 7,500 liters of blood daily. The left ventricle generates enough pressure to theoretically squirt blood over 9 meters, highlighting the immense power of this muscular organ.",
-          gradient: "from-red-400 to-pink-500",
-          bgGradient: "from-red-50 to-pink-100"
-        },
-        {
-          id: 2,
-          title: "Brain",
-          icon: "🧠",
-          fact: "The adult brain weighs about 1.4 kg and contains roughly 86 billion neurons. Each neuron can form thousands of synapses, creating an estimated 100 trillion connections, which are responsible for memory, learning, and regulating all bodily functions.",
-          gradient: "from-purple-400 to-pink-500",
-          bgGradient: "from-purple-50 to-pink-100"
-        },
-        {
-          id: 3,
-          title: "Lungs",
-          icon: "🌬️",
-          fact: "The lungs contain around 300 million alveoli with a total surface area of roughly 70 m². Each day, an adult breathes in enough air to fill over 20,000 liters, facilitating efficient oxygen and carbon dioxide exchange.",
-          gradient: "from-blue-400 to-pink-400",
-          bgGradient: "from-blue-50 to-pink-100"
-        },
-      ].map((card) => {
-        const [flipped, setFlipped] = React.useState(false);
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              id: 1,
+              title: "Heart",
+              icon: "❤️",
+              fact: "The human heart beats around 100,000 times per day, pumping roughly 7,500 liters of blood daily. The left ventricle generates enough pressure to theoretically squirt blood over 9 meters, highlighting the immense power of this muscular organ.",
+            },
+            {
+              id: 2,
+              title: "Brain",
+              icon: "🧠",
+              fact: "The adult brain weighs about 1.4 kg and contains roughly 86 billion neurons. Each neuron can form thousands of synapses, creating an estimated 100 trillion connections, which are responsible for memory, learning, and regulating all bodily functions.",
+            },
+            {
+              id: 3,
+              title: "Lungs",
+              icon: "🌬️",
+              fact: "The lungs contain around 300 million alveoli with a total surface area of roughly 70 m². Each day, an adult breathes in enough air to fill over 20,000 liters, facilitating efficient oxygen and carbon dioxide exchange.",
+            },
+          ].map((card) => {
+            const [flipped, setFlipped] = React.useState(false);
 
-        return (
-          <motion.div
-            key={card.id}
-            className="relative w-full h-80 rounded-3xl cursor-pointer group"
-            style={{ perspective: "1000px" }}
-            onMouseEnter={() => setFlipped(true)}
-            onMouseLeave={() => setFlipped(false)}
-            onClick={() => setFlipped(!flipped)}
-            whileHover={{ y: -5 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            {/* Card Container */}
-            <div
-              className="relative w-full h-full transition-transform duration-700 rounded-3xl"
-              style={{
-                transformStyle: "preserve-3d",
-                transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
-              }}
-            >
-              {/* Front Side */}
+            return (
               <div
-                className="absolute w-full h-full rounded-3xl shadow-2xl border-2 border-pink-200/60 overflow-hidden"
-                style={{ backfaceVisibility: "hidden" }}
+                key={card.id}
+                className="relative w-full h-64 rounded-2xl cursor-pointer"
+                style={{ perspective: "1000px" }}
+                onMouseEnter={() => setFlipped(true)}
+                onMouseLeave={() => setFlipped(false)}
+                onClick={() => setFlipped(!flipped)} // works for mobile
               >
-                {/* Background Gradient */}
-                <div className={`absolute inset-0 bg-gradient-to-br ${card.bgGradient} opacity-90`} />
-                
-                {/* Pattern Overlay */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(236,72,153,0.1)_1px,transparent_0)] bg-[length:20px_20px]" />
-                
-                {/* Content */}
-                <div className="relative z-10 h-full flex flex-col items-center justify-center p-6 text-center">
-                  {/* Icon Container */}
-                  <motion.div
-                    className={`mb-6 p-6 rounded-2xl bg-gradient-to-br ${card.gradient} shadow-lg`}
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
+                <div
+                  className="relative w-full h-full transition-transform duration-500 rounded-2xl"
+                  style={{
+                    transformStyle: "preserve-3d",
+                    transform: flipped ? "rotateY(180deg)" : "rotateY(0deg)",
+                  }}
+                >
+                  {/* Front */}
+                  <div
+                    className="absolute w-full h-full bg-pink-100 rounded-2xl shadow-lg flex flex-col items-center justify-center border border-pink-200"
+                    style={{ backfaceVisibility: "hidden" }}
                   >
-                    <span className="text-4xl">{card.icon}</span>
-                  </motion.div>
-
-                  {/* Title */}
-                  <h3 className="text-2xl font-bold text-pink-700 mb-3">
-                    {card.title}
-                  </h3>
-
-                  {/* Instruction */}
-                  <motion.p
-                    className="text-pink-600 text-sm flex items-center gap-2"
-                    animate={{ opacity: [0.6, 1, 0.6] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  >
-                    <span>👆</span>
-                    Click or hover to reveal fact
-                  </motion.p>
-
-                  {/* Floating Elements */}
-                  <motion.div
-                    className="absolute top-4 right-4 text-pink-300/60 text-lg"
-                    animate={{ rotate: [0, 180, 360] }}
-                    transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-                  >
-                    ✨
-                  </motion.div>
-                </div>
-              </div>
-
-              {/* Back Side */}
-              <div
-                className="absolute w-full h-full rounded-3xl shadow-2xl border-2 border-pink-200/60 overflow-hidden"
-                style={{
-                  backfaceVisibility: "hidden",
-                  transform: "rotateY(180deg)",
-                }}
-              >
-                {/* Background */}
-                <div className="absolute inset-0 bg-gradient-to-br from-pink-100 to-rose-100" />
-                
-                {/* Pattern */}
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_1px_1px,rgba(236,72,153,0.15)_1px,transparent_0)] bg-[length:15px_15px]" />
-
-                {/* Content */}
-                <div className="relative z-10 h-full flex flex-col p-6">
-                  {/* Header */}
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${card.gradient} shadow-md`}>
-                      <span className="text-2xl">{card.icon}</span>
-                    </div>
+                    <span className="text-5xl mb-4">{card.icon}</span>
                     <h3 className="text-xl font-bold text-pink-700">
-                      {card.title} Fact
+                      {card.title}
                     </h3>
                   </div>
 
-                  {/* Fact Text */}
-                  <div className="flex-1 overflow-y-auto">
-                    <p className="text-pink-700 leading-relaxed text-sm">
-                      {card.fact}
-                    </p>
-                  </div>
-
-                  {/* Action Button */}
-                  <motion.button
-                    className="mt-4 w-full py-2 bg-gradient-to-r from-pink-400 to-rose-500 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setFlipped(false);
+                  {/* Back */}
+                  <div
+                    className="absolute w-full h-full bg-pink-200 rounded-2xl shadow-lg flex items-center justify-center p-4 text-center"
+                    style={{
+                      backfaceVisibility: "hidden",
+                      transform: "rotateY(180deg)",
                     }}
                   >
-                    Flip Back
-                  </motion.button>
+                    <p className="text-pink-800 text-sm">{card.fact}</p>
+                  </div>
                 </div>
               </div>
-            </div>
+            );
+          })}
+        </div>
+      </section>
 
-            {/* Glow Effect */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-pink-400 to-rose-400 opacity-0 group-hover:opacity-20 blur-xl transition-opacity duration-500 -z-10" />
-          </motion.div>
-        );
-      })}
-    </div>
-
-    {/* Additional Info */}
-    <motion.div
-      className="text-center mt-12 p-6 bg-gradient-to-r from-pink-50 to-rose-50 rounded-2xl border border-pink-200 shadow-lg"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.6 }}
-    >
-      <p className="text-pink-700 font-semibold text-lg">
-        💫 More medical knowledge cards coming soon!
-      </p>
-      <p className="text-pink-600 text-sm mt-2">
-        Stay tuned for updates on new fascinating medical facts
-      </p>
-    </motion.div>
-  </motion.div>
-</section>
 
       {/* Footer */}
       <footer className="mt-20 w-full bg-gradient-to-b from-pink-100/80 to-pink-200/60 border-t border-pink-300/50 py-12 relative overflow-hidden">
@@ -1227,7 +1103,7 @@ export default function Home() {
               >
                 💗
               </motion.span>{" "}
-              by MB Agency • Future Doctor
+               • Future Doctor
             </motion.p>
 
             {/* Copyright */}
